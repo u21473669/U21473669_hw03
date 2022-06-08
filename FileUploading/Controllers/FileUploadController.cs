@@ -39,17 +39,17 @@ namespace FileUploading.Controllers
                 // store the file inside ~/App_Data/uploads folder
                 if (flexRadioDefault== "Document")
                 {
-                    ViewBag.Message = ("hello");
+                    ViewBag.Message = ("choose pdf or word file");
                    
                 }
                else if (flexRadioDefault == "Image")
                 {
-                    ViewBag.Message = ("hello");
+                    ViewBag.Message = ("Choose an image");
 
                 }
                else if (flexRadioDefault == "Video")
                 {
-                    ViewBag.Message = ("hello");
+                    ViewBag.Message = ("Choose a video");
 
                 }
                 else
@@ -59,7 +59,7 @@ namespace FileUploading.Controllers
                 }
 
                 //var path = Path.Combine(Server.MapPath("~/trypictures/uploads"), fileName);
-                if (EXTENSION == ".png"|| EXTENSION == ".jpg")
+                if (EXTENSION == ".png"|| EXTENSION == ".jpg"|| EXTENSION == ".jpeg"|| EXTENSION == ".gif")
                 {
                     var path = Path.Combine(HttpContext.Server.MapPath("~/Content/pictures"), Path.GetFileName(files.FileName));
                     files.SaveAs(path);
@@ -71,7 +71,7 @@ namespace FileUploading.Controllers
                     files.SaveAs(path);
                     ViewBag.Messsage = "successful";
                 }
-                else if (EXTENSION == ".pdf"|| EXTENSION == ".docx")
+                else if (EXTENSION == ".pdf"|| EXTENSION == ".docx" || EXTENSION == ".doc")
                 {
                     var path = Path.Combine(Server.MapPath("~/App_Data/uploads"), fileName);
                     files.SaveAs(path);
