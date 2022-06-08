@@ -63,16 +63,17 @@
 
                             <button class="btn">
                                 @Html.ActionLink("Download", "DownloadFile",
-                                 new { fileName = file.FileName })
+                      new { fileName = file.FileName })
                             </button>
                             <button class="btn">
                                 @Html.ActionLink("DELETE", "DeleteFile",
-                               new { fileName = file.FileName },
-                               new { onclick = "return confirm('Are you sure you wish to delete this?');" })
+                    new { fileName = file.FileName },
+                    new { onclick = "return confirm('Are you sure you wish to delete this?');" })
                             </button>
                         </div>
                     </div>
                 </div>
+            }
                 <style>
                     :root {
                         --gradient: linear-gradient(to left top, #DD2476 10%, #FF512F 90%) !important;
@@ -140,7 +141,7 @@
                 </script>
 
 
-            }
+            
 </body>
 
 
