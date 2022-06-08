@@ -77,7 +77,7 @@ namespace FileUploading.Controllers
 
             System.IO.File.Delete(path);
 
-            return RedirectToAction("videos");
+            return RedirectToAction("video");
         }
     }
 }

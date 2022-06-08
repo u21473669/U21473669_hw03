@@ -29,9 +29,9 @@ namespace FileUploading.Controllers
             // Verify that the user selected a file
             // Not null and has a length
 
-            if (files != null && files.ContentLength > 0)
+            if (files != null && files.ContentLength > 0)  
             {
-                // extract only the filename
+                // extract only the filename  
 
                 var fileName = Path.GetFileName(files.FileName);
                 var EXTENSION = Path.GetExtension(files.FileName);
