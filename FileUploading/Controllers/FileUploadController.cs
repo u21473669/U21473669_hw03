@@ -44,7 +44,7 @@ namespace FileUploading.Controllers
                     ViewBag.Messsage = "successful";
                 }
                 //if extension is .... store in videos
-                else if (EXTENSION == ".mp4" || EXTENSION == ".webm" || EXTENSION == ".avif" || flexRadioDefault == "Video")
+                else if (EXTENSION == ".mp4" || EXTENSION == ".webm" ||  flexRadioDefault == "Video")
                 {
                     var path = Path.Combine(HttpContext.Server.MapPath("~/Content/videos"), Path.GetFileName(files.FileName));
                     files.SaveAs(path);
