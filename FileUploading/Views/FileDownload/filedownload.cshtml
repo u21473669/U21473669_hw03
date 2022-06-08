@@ -1,0 +1,97 @@
+﻿@*
+    REMEMBER the using of Models
+*@
+
+@using FileUploading.Models
+@model List<FileModel>
+
+@*
+
+    @model IEnumerable<FileUploadDownload.Models.FileModel>
+    Generated List details
+*@
+@{
+    ViewBag.Title = "Downloader";
+}
+<head>
+    <style type="text/css">
+        .auto-style {
+            color: #FFFFFF;
+        }
+
+        .t {
+            text-align: center;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<div class="well-sm">
+    <div class="div">
+        <h2>Files Page</h2>
+        <p>
+            This is for DOWNLOADING files from the "App_Data/uploads/" folder
+        </p>
+    </div>
+</div>
+<body class="body">
+
+    @*
+        Will generate as item but can be renamed.
+    *@
+    <div style="height: 400px; overflow: auto;">
+        <div class="well-sm">
+            <table class="table table-condensed table-hover">
+                <thead style="position: sticky;top: 0">
+                    <tr bgcolor="#07e4f0" class="auto-style">
+                        <th style="color:black" class="col-lg-8">File Name</th>
+                        <th style="color:black" class="t, col-lg-2">DOWNLOAD OPTION</th>
+                        <th style="color:black" class="t, col-lg-2">DELETE OPTION</th>
+                    </tr>
+                </thead>
+                @foreach (FileModel file in Model)
+                {
+                    <tr>
+                        @*
+                            Default >> @Html.DisplayFor(modelItem => file.FileName)
+                        *@
+
+                        <td>@file.FileName</td>
+
+
+
+
+
+
+
+                        <td>
+                            <button class="btn btn-success" style="color:aqua;">
+                                @Html.ActionLink("Download", "DownloadFile",
+                                 new { fileName = file.FileName })
+                            </button>
+                        </td>
+                        <td>
+                            <button class="btn btn-danger" style="color:orangered;">
+                                @Html.ActionLink("Delete", "DeleteFile",
+                               new { fileName = file.FileName },
+                               new { onclick = "return confirm('Are you sure you wish to delete this?');" })
+                            </button>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+    <style>
+        
+
+        .body {
+            background-color: rgba(136, 143, 143, 0.8);
+        }
+
+        .div {
+            background-color: rgba(35, 216, 219);
+            border: 5px solid rgba(245, 117, 5);
+            text-align: center;
+        }
+    </style>
+    </body>

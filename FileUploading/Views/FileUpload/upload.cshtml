@@ -1,0 +1,95 @@
+﻿@{
+    ViewBag.Title = "Uploader";
+}
+<body class="body">
+    <div class="div">
+        <h2>Single File Upload</h2>
+        <p>This is for UPLOADING files to all the folders.</p>
+    </div>
+    <div class="row">
+        <div class="col-xs-6">
+
+            <div class="card" style="width: 12rem;">
+
+                <div class="well-sm">
+                    <div class="form-horizontal">
+                        @using (Html.BeginForm("Index", "FileUpload", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+                        // an encoding type that allows files to be sent through a POST.
+                        // Quite simply, without this encoding the files cannot be sent through POST.
+                        {
+                            <div><input type="file" name="files" /></div>
+                            <br />
+                            <div><input type="submit" value="Upload" /></div>
+
+
+
+
+                        }
+
+                    </div>
+                    <br />
+                </div>
+
+            </div>
+
+
+
+
+        </div>
+
+        
+
+       
+       
+
+        <div class="col-xs-6">
+
+            <div class="card" style="width: 12rem;">
+                <div class="card-header" id="m2"></div>
+                <h2>Option selection</h2>
+                @using (Html.BeginForm("Index", "FileUpload", FormMethod.Post, new { enctype = "multipart/form-data" }))
+
+                // an encoding type that allows files to be sent through a POST.
+                // Quite simply, without this encoding the files cannot be sent through POST.
+                {
+
+
+
+
+                    
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1" />
+                        <label class="form-check-label" for="flexRadioDefault1">Document </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="picture" />
+                        <label class="form-check-label" for="flexRadioDefault2"> Image </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault3" />
+                        <label class="form-check-label" for="flexRadioDefault3"> Video </label>
+                    </div>
+                    <br />
+
+
+
+                }
+            </div>
+        </div>
+    </div>
+    <style>
+
+
+        .body {
+            background-color: rgba(136, 143, 143, 0.8);
+        }
+
+        .div {
+            background-color: rgba(35, 216, 219);
+            border: 5px solid rgba(245, 117, 5);
+            text-align: center;
+        }
+    </style>
+</body>
