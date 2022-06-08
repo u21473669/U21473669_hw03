@@ -51,7 +51,7 @@
                     <div class="card" style="width: 25rem;">
                         @*place videos in fancy box*@
                         <div>
-                            <a class="fancybox-iframe"
+                            <a class="fancybox-single"
                                rel="group"
                                href="~/Content/videos/">
                                 <video width="250" height="250" src="~/Content/videos/@file.FileName " controls class="card-img-top" alt="..."><h5 class="card-title">@file.FileName</h5></video>
@@ -123,7 +123,7 @@
 
             <script>
                 $(document).ready(function () {
-                    $(".fancy-photo").fancybox({
+                    $(".fancybox-single").fancybox({
                         cyclic: true,
                         onUpdate: function () {
                             $(".fancybox-nav span").css({

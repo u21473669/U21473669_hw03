@@ -41,14 +41,14 @@ namespace FileUploading.Controllers
                 {
                     var path = Path.Combine(HttpContext.Server.MapPath("~/Content/pictures"), Path.GetFileName(files.FileName));
                     files.SaveAs(path);
-                    ViewBag.Messsage = "successful";
+                    
                 }
                 //if extension is .... store in videos
                 else if (EXTENSION == ".mp4" || EXTENSION == ".webm" ||  flexRadioDefault == "Video")
                 {
                     var path = Path.Combine(HttpContext.Server.MapPath("~/Content/videos"), Path.GetFileName(files.FileName));
                     files.SaveAs(path);
-                    ViewBag.Messsage = "successful";
+                    
                 }
                 //if extension is .... store in uploads
                 else if (EXTENSION == ".pdf"|| EXTENSION == ".docx" || EXTENSION == ".doc"|| flexRadioDefault == "Document")
