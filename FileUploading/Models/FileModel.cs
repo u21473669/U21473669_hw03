@@ -13,7 +13,7 @@ namespace FileUploading.Models
         [Display(Name = "File Name")]
         public string FileName { get; set; }
       
-        public string Path1 { get; set; }
+        
      
 
 

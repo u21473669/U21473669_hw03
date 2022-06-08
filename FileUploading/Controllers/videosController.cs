@@ -44,8 +44,7 @@ namespace FileUploading.Controllers
 
 
 
-        public FileResult DownloadFile(string fileName) // Why fileName and not FileName????
-                                                        // Because of using.
+        public FileResult DownloadFile(string fileName) 
         {
             //Build the File Path.
 
@@ -68,13 +67,12 @@ namespace FileUploading.Controllers
 
         public ActionResult DeleteFile(string fileName)
         {
-            //Delete requires reading the files and then the allocation of a file path.
-            //The file is then deleted based on the identified file path.
-
+            
+            //Build the File Path.
             string path = Server.MapPath("~/Content/videos/") + fileName;
-            ///string path = Server.MapPath("~/trypictures/uploads/") + fileName;
+          
             byte[] bytes = System.IO.File.ReadAllBytes(path);
-
+            //delete path
             System.IO.File.Delete(path);
 
             return RedirectToAction("video");

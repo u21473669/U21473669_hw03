@@ -1,15 +1,9 @@
-﻿@*
-    REMEMBER the using of Models
-*@
+﻿
 
 @using FileUploading.Models
 @model List<FileModel>
 
-@*
 
-    @model IEnumerable<FileUploadDownload.Models.FileModel>
-    Generated List details
-*@
 @{
     ViewBag.Title = "Images";
 }
@@ -40,13 +34,14 @@
 
     <div class="container mx-auto mt-4">
         <div class="row">
-
+            @*step through filemodel to get all images*@
             @foreach (FileModel file in Model)
             {
                 <div class="col-md-4">
                     <div class="card" style="width: 25rem;">
-                        @* <img width="250" height="250" src="~/Content/pictures/@file.FileName" class="card-img-top" id="pics" alt="...">*@
+                      
                         <div>
+                            @*place images in fancy box*@
                             <a class="fancy-photo"
                                rel="group"
                                href="~/Content/pictures/@file.FileName">
@@ -56,11 +51,12 @@
                         </div>
                         <div width="320" height="240" class="card-body">
                             <h5 class="card-title">@file.FileName</h5>
-
+                            @*pass image to download *@
                             <button class="btn">
                                 @Html.ActionLink("Download", "DownloadFile",
                       new { fileName = file.FileName })
                             </button>
+                            @*pass image to delete *@
                             <button class="btn">
                                 @Html.ActionLink("DELETE", "DeleteFile",
                     new { fileName = file.FileName },
@@ -122,9 +118,14 @@
                     $(document).ready(function () {
                         $(".fancy-photo").fancybox({
                             cyclic: true,
+                            width: 400,
+                            height: 300,
+                            autoSize: false
+                            
                             onUpdate: function () {
                                 $(".fancybox-nav span").css({
                                     visibility: "visible"
+                                    
                                 });
                                 return;
                             },
@@ -134,6 +135,9 @@
                                 });
                                 return;
                             }
+                            
+                        }
+});
                         });
                     });
                 </script>

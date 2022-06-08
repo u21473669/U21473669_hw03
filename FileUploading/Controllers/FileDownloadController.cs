@@ -32,8 +32,7 @@ namespace FileUploading.Controllers
             return View(files);
         }
 
-        public FileResult DownloadFile(string fileName) // Why fileName and not FileName????
-                                                        // Because of using.
+        public FileResult DownloadFile(string fileName) 
         {
             
             //Build the File Path.
@@ -48,21 +47,18 @@ namespace FileUploading.Controllers
 
             //Send the File to Download.
 
-            //The OCTET-STREAM format is used for file attachments on the Web with an
-            //unknown file type. These .octet-stream files are arbitrary binary data
-            //files that may be in any multimedia format.
+            
 
             return File(bytes, "application/octet-stream", fileName);
         }
 
         public ActionResult DeleteFile(string fileName)
         {
-            //Delete requires reading the files and then the allocation of a file path.
-            //The file is then deleted based on the identified file path.
 
+            //Build the File Path.
             string path = Server.MapPath("~/App_Data/uploads/") + fileName;
             byte[] bytes = System.IO.File.ReadAllBytes(path);
-
+            //delete the path
             System.IO.File.Delete(path);
 
             return RedirectToAction("filedownload");

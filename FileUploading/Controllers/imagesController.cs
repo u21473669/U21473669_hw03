@@ -54,22 +54,19 @@ namespace FileUploading.Controllers
 
             //Send the File to Download.
 
-            //The OCTET-STREAM format is used for file attachments on the Web with an
-            //unknown file type. These .octet-stream files are arbitrary binary data
-            //files that may be in any multimedia format.
+            
 
             return File(bytes, "application/octet-stream", fileName);
         }
 
         public ActionResult DeleteFile(string fileName)
         {
-            //Delete requires reading the files and then the allocation of a file path.
-            //The file is then deleted based on the identified file path.
-
-           string path = Server.MapPath("~/Content/pictures/") + fileName;
-           ///string path = Server.MapPath("~/trypictures/uploads/") + fileName;
+            
+            //Build the File Path.
+            string path = Server.MapPath("~/Content/pictures/") + fileName;
+           
             byte[] bytes = System.IO.File.ReadAllBytes(path);
-
+            //delete path
             System.IO.File.Delete(path);
 
              return RedirectToAction("images");

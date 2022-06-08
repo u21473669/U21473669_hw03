@@ -11,11 +11,7 @@ namespace FileUploading.Controllers
     public class FileUploadController : Controller
     {
         
-          //Example: A client (browser) sends an HTTP request to the server;
-          //then the server returns a response to the client. The response
-          //contains status information about the request and may also
-          //contain the requested content.
-
+         
           [HttpGet]
         public ActionResult upload()  //INSIDE FileUpload
         {
@@ -31,47 +27,31 @@ namespace FileUploading.Controllers
 
             if (files != null && files.ContentLength > 0)  
             {
-                // extract only the filename  
+                // extract  the filename  
 
                 var fileName = Path.GetFileName(files.FileName);
+                // extract  the file extension
                 var EXTENSION = Path.GetExtension(files.FileName);
 
-                // store the file inside ~/App_Data/uploads folder
-                if (flexRadioDefault== "Document")
-                {
-                    ViewBag.Message = ("choose pdf or word file");
-                   
-                }
-               else if (flexRadioDefault == "Image")
-                {
-                    ViewBag.Message = ("Choose an image");
+              
+                
 
-                }
-               else if (flexRadioDefault == "Video")
-                {
-                    ViewBag.Message = ("Choose a video");
-
-                }
-                else
-                {
-                    ViewBag.Message = ("slect a button");
-
-                }
-
-                //var path = Path.Combine(Server.MapPath("~/trypictures/uploads"), fileName);
-                if (EXTENSION == ".png"|| EXTENSION == ".jpg"|| EXTENSION == ".jpeg"|| EXTENSION == ".gif")
+                //if extension is .... store in pictures
+                if (EXTENSION == ".png"|| EXTENSION == ".jpg"|| EXTENSION == ".jpeg"|| EXTENSION == ".gif"|| flexRadioDefault == "Image")
                 {
                     var path = Path.Combine(HttpContext.Server.MapPath("~/Content/pictures"), Path.GetFileName(files.FileName));
                     files.SaveAs(path);
                     ViewBag.Messsage = "successful";
                 }
-              else if (EXTENSION == ".mp4" )
+                //if extension is .... store in videos
+                else if (EXTENSION == ".mp4" || flexRadioDefault == "Video")
                 {
                     var path = Path.Combine(HttpContext.Server.MapPath("~/Content/videos"), Path.GetFileName(files.FileName));
                     files.SaveAs(path);
                     ViewBag.Messsage = "successful";
                 }
-                else if (EXTENSION == ".pdf"|| EXTENSION == ".docx" || EXTENSION == ".doc")
+                //if extension is .... store in uploads
+                else if (EXTENSION == ".pdf"|| EXTENSION == ".docx" || EXTENSION == ".doc"|| flexRadioDefault == "Document")
                 {
                     var path = Path.Combine(Server.MapPath("~/App_Data/uploads"), fileName);
                     files.SaveAs(path);
@@ -81,7 +61,7 @@ namespace FileUploading.Controllers
                    
                 
 
-                // The chosen default path for saving
+                
 
                 
             }

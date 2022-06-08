@@ -1,15 +1,9 @@
-﻿@*
-    REMEMBER the using of Models
-*@
+﻿
 
 @using FileUploading.Models
 @model List<FileModel>
 
-@*
 
-    @model IEnumerable<FileUploadDownload.Models.FileModel>
-    Generated List details
-*@
 @{
     ViewBag.Title = "Downloader";
 }
@@ -48,35 +42,36 @@
                         <th style="color:black" class="t, col-lg-2">DELETE OPTION</th>
                     </tr>
                 </thead>
+                @*step through filemodel to get all files*@
                 @foreach (FileModel file in Model)
                 {
-                    <tr>
-                        @*
-                            Default >> @Html.DisplayFor(modelItem => file.FileName)
-                        *@
+            <tr>
 
-                        <td>@file.FileName</td>
+                @*display all files*@
+                <td>@file.FileName</td>
 
 
 
 
 
 
+                @*pass file to download *@
+                <td>
+                    <button class="btn btn-success" style="color:aqua;">
+                        @Html.ActionLink("Download", "DownloadFile",
+                         new { fileName = file.FileName })
+                    </button>
+                </td>
+                <td>
 
-                        <td>
-                            <button class="btn btn-success" style="color:aqua;">
-                                @Html.ActionLink("Download", "DownloadFile",
-                                 new { fileName = file.FileName })
-                            </button>
-                        </td>
-                        <td>
-                            <button class="btn btn-danger" style="color:orangered;">
-                                @Html.ActionLink("Delete", "DeleteFile",
-                               new { fileName = file.FileName },
-                               new { onclick = "return confirm('Are you sure you wish to delete this?');" })
-                            </button>
-                        </td>
-                    </tr>
+                    @*pass file to delete *@
+                    <button class="btn btn-danger" style="color:orangered;">
+                        @Html.ActionLink("Delete", "DeleteFile",
+                       new { fileName = file.FileName },
+                       new { onclick = "return confirm('Are you sure you wish to delete this?');" })
+                    </button>
+                </td>
+            </tr>
                 }
             </table>
         </div>

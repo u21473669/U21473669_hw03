@@ -43,13 +43,13 @@
 
     <div class="container mx-auto mt-4">
         <div class="row">
-
+            @*step through filemodel to get all videos*@
             @foreach (FileModel file in Model)
             {
 
                 <div class="col-md-4">
                     <div class="card" style="width: 25rem;">
-                        @*<video width="250" height="250" src="~/Content/videos/@file.FileName" controls class="card-img-top" alt="..."> <h5 class="card-title">@file.FileName</h5></video>*@
+                        @*place videos in fancy box*@
                         <div>
                             <a class="fancybox-iframe"
                                rel="group"
@@ -60,11 +60,12 @@
                         </div>
                         <div width="320" height="240" class="card-body">
                             <h5 class="card-title">@file.FileName</h5>
-
+                            @*pass videos to download *@
                             <button class="btn">
                                 @Html.ActionLink("Download", "DownloadFile",
                       new { fileName = file.FileName })
                             </button>
+                            @*pass videos to delete *@
                             <button class="btn">
                                 @Html.ActionLink("DELETE", "DeleteFile",
                     new { fileName = file.FileName },
@@ -74,74 +75,74 @@
                     </div>
                 </div>
             }
-                <style>
-                    :root {
-                        --gradient: linear-gradient(to left top, #DD2476 10%, #FF512F 90%) !important;
-                    }
+            <style>
+                :root {
+                    --gradient: linear-gradient(to left top, #DD2476 10%, #FF512F 90%) !important;
+                }
 
 
 
-                    .card {
-                        background: #222;
-                        border: 1px solid #dd2476;
-                        background-color: rgba(17, 18, 18, 0.8);
-                        color: rgba(35, 216, 219);
-                        margin-bottom: 2rem;
-                    }
+                .card {
+                    background: #222;
+                    border: 1px solid #dd2476;
+                    background-color: rgba(17, 18, 18, 0.8);
+                    color: rgba(35, 216, 219);
+                    margin-bottom: 2rem;
+                }
 
-                    .btn {
-                        border: 5px solid;
-                        border-image-slice: 1;
+                .btn {
+                    border: 5px solid;
+                    border-image-slice: 1;
+                    background: var(--gradient) !important;
+                    -webkit-background-clip: text !important;
+                    -webkit-text-fill-color: transparent !important;
+                    border-image-source: var(--gradient) !important;
+                    text-decoration: none;
+                    transition: all .4s ease;
+                }
+
+                    .btn:hover, .btn:focus {
                         background: var(--gradient) !important;
-                        -webkit-background-clip: text !important;
-                        -webkit-text-fill-color: transparent !important;
-                        border-image-source: var(--gradient) !important;
-                        text-decoration: none;
-                        transition: all .4s ease;
+                        -webkit-background-clip: none !important;
+                        -webkit-text-fill-color: #fff !important;
+                        border: 5px solid #fff !important;
+                        box-shadow: #222 1px 0 10px;
+                        text-decoration: underline;
                     }
 
-                        .btn:hover, .btn:focus {
-                            background: var(--gradient) !important;
-                            -webkit-background-clip: none !important;
-                            -webkit-text-fill-color: #fff !important;
-                            border: 5px solid #fff !important;
-                            box-shadow: #222 1px 0 10px;
-                            text-decoration: underline;
+                .body {
+                    background-color: rgba(136, 143, 143, 0.8);
+                }
+
+                .div {
+                    background-color: rgba(35, 216, 219);
+                    border: 5px solid rgba(245, 117, 5);
+                    text-align: center;
+                }
+            </style>
+
+            <script>
+                $(document).ready(function () {
+                    $(".fancy-photo").fancybox({
+                        cyclic: true,
+                        onUpdate: function () {
+                            $(".fancybox-nav span").css({
+                                visibility: "visible"
+                            });
+                            return;
+                        },
+                        afterClose: function () {
+                            $(".fancybox-nav span").css({
+                                visibility: "hidden"
+                            });
+                            return;
                         }
-
-                    .body {
-                        background-color: rgba(136, 143, 143, 0.8);
-                    }
-
-                    .div {
-                        background-color: rgba(35, 216, 219);
-                        border: 5px solid rgba(245, 117, 5);
-                        text-align: center;
-                    }
-                </style>
-
-                <script>
-                    $(document).ready(function () {
-                        $(".fancy-photo").fancybox({
-                            cyclic: true,
-                            onUpdate: function () {
-                                $(".fancybox-nav span").css({
-                                    visibility: "visible"
-                                });
-                                return;
-                            },
-                            afterClose: function () {
-                                $(".fancybox-nav span").css({
-                                    visibility: "hidden"
-                                });
-                                return;
-                            }
-                        });
                     });
-                </script>
+                });
+            </script>
 
 
-            
+
 </body>
 
 
